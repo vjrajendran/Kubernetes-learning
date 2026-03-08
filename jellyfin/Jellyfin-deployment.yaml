@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin-deployment
+  labels:
+    app: jellyfin
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+      - name: jellyfin
+        image: vijaytech96/cipheronic:1.0
+        ports:
+        - containerPort: 8096
+      imagePullSecrets:
+      - name: dockerhub-secret
