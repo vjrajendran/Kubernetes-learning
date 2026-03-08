@@ -1,0 +1,22 @@
+provider:
+  name: cloudflare
+
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-token
+        key: api-token
+
+txtOwnerId: "k3s-jameson"
+
+domainFilters:
+  - tecminal.com
+
+policy: sync
+
+sources:
+  - ingress
+
+cloudflare:
+  proxied: false

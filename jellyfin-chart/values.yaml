@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: vijaytech96/cipheronic
+  tag: "1.0"
+
+imagePullSecrets:
+  - name: dockerhub-secret
+
+service:
+  port: 8096
+
+ingress:
+  host: jellyfin-helm.tecminal.com
+  tls:
+    secretName: jellyfin-helm-tls
+    clusterIssuer: letsencrypt-prod
