@@ -1,0 +1,19 @@
+descheduler:
+  schedule: "*/30 * * * *"   # run every 30 minutes
+
+  deschedulerPolicy:
+    profiles:
+      - name: default
+        pluginConfig:
+          - name: DefaultEvictor
+            args:
+              ignorePvcPods: true
+              evictLocalStoragePods: false
+        plugins:
+          balance:
+            enabled:
+              - LowNodeUtilization
+              - RemoveDuplicates
+          deschedule:
+            enabled:
+              - PodLifeTime
