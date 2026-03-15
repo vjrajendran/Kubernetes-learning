@@ -3,7 +3,7 @@ argo-cd:
     domain: argo.tecminal.com
   configs:
     params:
-      server.insecure: true
+      server.insecure: "true"
   server:
     ingress:
       enabled: true
@@ -12,3 +12,5 @@ argo-cd:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
       tls: true
+    extraArgs:
+      - --insecure
