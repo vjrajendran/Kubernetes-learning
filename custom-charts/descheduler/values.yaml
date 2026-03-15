@@ -1,5 +1,5 @@
 descheduler:
-  schedule: "*/30 * * * *"   # run every 30 minutes
+  schedule: "*/30 * * * *"
 
   deschedulerPolicy:
     profiles:
@@ -9,6 +9,9 @@ descheduler:
             args:
               ignorePvcPods: true
               evictLocalStoragePods: false
+          - name: PodLifeTime
+            args:
+              maxPodLifeTimeSeconds: 86400    # evict pods older than 24 hours
         plugins:
           balance:
             enabled:
